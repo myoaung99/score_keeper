@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score Keeper</title>
+
+    <!--BuLma Framework-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="./images/ping pong.jpg" alt="Placeholder image" />
+              </figure>
+            </div>
+            
+            <header class="card-header">
+                <p class="card-header-title">
+                    Ping Pong Score Keeper
+                </p>
+
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <h1>
+                  <span id="pOneDisplay">0</span> to
+                  <span id="pTwoDisplay">0</span>
+                </h1>
+                <p class="subtitle">Use the buttons below to keep score.</p>
+                <label for="winning-score" class="label is-large is-inline">Playing To</label>
+                <div class="select is-primary">
+                    <select name="winning-score" id="winning-score">
+                        <option value="0">Select Score</option>
+                        <option value="5">5</option>
+                        <option value="7">7</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+            
+              <div class="card mt-4">
+                <footer class="card-footer">
+                    <button class="button is-primary card-footer-item is-large" id="pOneBtn">+1 Player One</button>
+                    <button class="button is-info card-footer-item is-large" id="pTwoBtn">+1 Player Two</button>
+                    <button class="button is-danger card-footer-item is-large" id="reset">Reset</button>
+                </footer>
+              </div>
+          
+              </div>
+            </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Original Codes-->
+    <!-- <div class="box">
+      <div class="img-box">
+        <img
+          class="head-pic"
+          src="./images/ping pong.jpg"
+          alt="Image of ping pong game"
+        />
+        <p>Ping Pong Score Keeper</p>
+      </div>
+
+      <div class="sec-div">
+        <div class="ui-box">
+          <h1>
+            <span id="pOneDisplay">0</span> to <span id="pTwoDisplay">0</span>
+          </h1>
+          <p>Use the buttons below to keep score.</p>
+
+          <div class="selector">
+            <span class="score-selector">Playing To</span>
+            <select name="winning-score" id="winning-score">
+              <option value="0">Select Score</option>
+              <option value="5">5</option>
+              <option value="7">7</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-div">
+          <button id="pOneBtn">+1 Player One</button>
+          <button id="pTwoBtn">+1 Player Two</button>
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+    </div> -->
+    <script src="app.js"></script>
+  </body>
+</html>
