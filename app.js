@@ -13,8 +13,6 @@ const p2 = {
 const resetBtn = document.querySelector("#reset");
 const winScore = document.querySelector("#winning-score");
 
-let p1Score = 0;
-let p2Score = 0;
 let winningScore = 0;
 let isGameOver = false;
 
@@ -23,56 +21,39 @@ winScore.addEventListener("change", () => {
   reset();
 });
 
-const checkWinner = () => {
-  if (p1Score > p2Score) {
-    p1Display.style.color = "green";
-    p2Display.style.color = "red";
-  } else {
-    p2Display.style.color = "green";
-    p1Display.style.color = "red";
-  }
-
-  p1Btn.disabled = true;
-  p2Btn.disabled = true;
-};
-
-p1Btn.addEventListener("click", () => {
+function updateScore(player, opponent) {
   if (!isGameOver) {
-    if (p1Score !== winningScore) {
-      p1Score += 1;
-      if (p1Score === winningScore) {
+    if (player.score !== winningScore) {
+      player.score += 1;
+      if (player.score === winningScore) {
         isGameOver = true;
-        checkWinner();
+        player.display.classList.add("has-text-success");
+        opponent.display.classList.add("has-text-danger");
+
+        player.button.disabled = true;
+        opponent.button.disabled = true;
       }
-      p1Display.innerHTML = p1Score;
     }
+    player.display.innerHTML = player.score;
   }
+}
+
+p1.button.addEventListener("click", () => {
+  updateScore(p1, p2);
 });
 
-p2Btn.addEventListener("click", () => {
-  if (!isGameOver) {
-    if (p2Score !== winningScore) {
-      p2Score += 1;
-      if (p2Score === winningScore) {
-        isGameOver = true;
-        checkWinner();
-      }
-      p2Display.innerHTML = p2Score;
-    }
-  }
+p2.button.addEventListener("click", () => {
+  updateScore(p2, p1);
 });
 
 function reset() {
-  p1Score = 0;
-  p2Score = 0;
-  p1Display.innerHTML = p1Score;
-  p2Display.innerHTML = p2Score;
-  p2Display.style.color = "black";
-  p1Display.style.color = "black";
   isGameOver = false;
-
-  p1Btn.disabled = false;
-  p2Btn.disabled = false;
+  for (let p of [p1, p2]) {
+    p.score = 0;
+    p.display.innerHTML = p1.score;
+    p.display.classList.remove("has-text-success", "has-text-danger");
+    p.button.disabled = false;
+  }
 }
 
 resetBtn.addEventListener("click", reset);
